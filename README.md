@@ -1,65 +1,27 @@
-# Introduction
+# Available Scripts
 
-## Tech stack
+In the project directory, you can run:
 
-1. react hook (using provider to store shared data)
-   I use react `provider`, `useContext`, `useState` to store the shared data serverInfo which got from QR code
+### `npm start`
 
-```jsx
-export const ServerInfoProvider = ({ children }) => {
-  const [serverInfo, setServerInfo] = useState({});
-  return (
-    <ServerInfoContext.Provider
-      value={{
-        setServerInfo,
-        serverInfo,
-      }}
-    >
-      {children}
-    </ServerInfoContext.Provider>
-  );
-};
-```
+Runs the app in the development mode.<br>
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
-2. cypress for e2e
+### `npm run lint`
 
-3) html5-qrcode (time limitation)
-4) umi.js (faster than Create React App )
-5) prettier eslint with commit hook (husky) lint-staged
+lint code
 
-TODO
+### `npm run lint:fix`
 
-- [ ] storybook
-- [ ] push hook
-- [ ] use storybook snapshots instead of jest snapshots
-- [ ] storybook-chromatic
-- [ ] unit test
+lint and automatically fix code
 
-## Development
+### `npm test`
 
-1. `npm install`
-2. `npm start`
+unit test
 
-```
-  App running at:
-  - Local:   http://localhost:8000/ (copied to clipboard)
-  - Network: http://192.168.31.167:8000/
-```
+### `npm cypress:open`
 
-## Linting
+e2e open cypress , cypress test should run after `npm start`
 
-lint: `npm run lint`
-
-lint fix: `npm run lint:fix`
-
-## Test
-
-unit test: `npm test`
-
-e2e open cypress: `npm cypress:open`
-
-e2e cypress `npm cypress`
-
-## Build
-
-build: `npm run build`
+`npm cypress`
+e2e cypress

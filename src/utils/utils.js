@@ -1,3 +1,5 @@
+import { Html5QrcodeScanner } from 'html5-qrcode';
+
 export const parseUrlString = resultTxt => {
   const arrayString = resultTxt.replace('https://', '').split(';');
   const [urlString, userNameString, passwordString] = arrayString;
@@ -25,3 +27,10 @@ export const readFile = file => {
     reader.readAsDataURL(file);
   });
 };
+
+export const getScannerResult = () =>
+  new Promise(resolve => {
+    new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }).render(resultTxt =>
+      resolve(resultTxt),
+    );
+  });

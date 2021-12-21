@@ -1,29 +1,22 @@
 import React, { useState } from 'react';
-import { Html5QrcodeScanner } from 'html5-qrcode';
 import router from 'umi/router';
-import styles from './index.less';
+import { getScannerResult } from '../../utils/utils';
 import { parseUrlString } from '@/utils/utils';
-import { useServerInfo } from '@/hooks/hooks';
-const getScannerResult = () =>
-  new Promise(resolve => {
-    new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }).render(resultTxt =>
-      resolve(resultTxt),
-    );
-  });
+import { useServer } from '@/hooks/hooks';
 
 export default () => {
+  const { selectServer } = useServer();
   const [showScanner, setShowScanner] = useState(false);
-  const { setServerInfo } = useServerInfo();
-  const changeToScanModel = async () => {
+  const startScanning = async () => {
     setShowScanner(true);
     const resultTxt = await getScannerResult();
-    setServerInfo(parseUrlString(resultTxt));
+    selectServer(parseUrlString(resultTxt));
     router.push('/Camera');
   };
   return (
-    <div className={styles.page}>
+    <div>
       <div id="reader" />
-      {!showScanner && <button onClick={() => changeToScanModel()}>Scan QR Code</button>}
+      {!showScanner && <button onClick={() => startScanning()}>Scan QR Code</button>}
     </div>
   );
 };

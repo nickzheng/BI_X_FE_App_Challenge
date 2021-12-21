@@ -27,7 +27,7 @@ describe('Test BI app', () => {
   it('should make the takePhoto button disabled ', () => {
     cy.wait(500);
     cy.get('[data-testid="takePhoto"]').should('be.disabled');
-    cy.get('[data-testid="status"]').should('have.text', 'Status: unknown');
+    cy.get('[data-testid="status"]').should('have.text', 'STATUS: UNKNOWN');
   });
   it('should make checkServerStatusAPI response ok, after check server status ', () => {
     cy.wait(500);
@@ -41,7 +41,7 @@ describe('Test BI app', () => {
   });
 
   it('should make the takePhoto button enable, after check server status ', () => {
-    cy.get('[data-testid="status"]').should('have.text', 'Status: ok');
+    cy.get('[data-testid="status"]').should('have.text', 'STATUS: ok');
     cy.get('[data-testid="takePhoto"]').should('not.be.disabled');
   });
 
