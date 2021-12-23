@@ -23,5 +23,5 @@ unit test
 
 e2e open cypress , cypress test should run after `npm start`
 
-`npm cypress`
+### `npm cypress`
 e2e cypress
